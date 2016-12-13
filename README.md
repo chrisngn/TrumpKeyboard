@@ -1,3 +1,5 @@
+Make our texting great again! Inspired by our President's words of wisdom!
+
 Copyright 2016 Chris Nguyen
 
 Licensed under the Apache License, Version 2.0 (the "License");
