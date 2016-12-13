@@ -1,0 +1,71 @@
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:horizontalGap="0px"
+    android:keyHeight="40dp"
+    android:keyWidth="100%p"
+    android:verticalGap="0px">
+
+    <!--<Row>-->
+
+        <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="100dp">-->
+
+            <!--<Row>-->
+                <!--<Key-->
+                    <!--android:codes="49"-->
+                    <!--android:keyEdgeFlags="left"-->
+                    <!--android:keyLabel="hello"-->
+                    <!--android:keyOutputText="hello" />-->
+            <!--</Row>-->
+            <!--<Row>-->
+                <!--<Key-->
+                    <!--android:codes="49"-->
+                    <!--android:keyEdgeFlags="left"-->
+                    <!--android:keyLabel="how"-->
+                    <!--android:keyOutputText="how" />-->
+            <!--</Row>-->
+            <!--<Row>-->
+                <!--<Key-->
+                    <!--android:codes="49"-->
+                    <!--android:keyEdgeFlags="left"-->
+                    <!--android:keyLabel="are"-->
+                    <!--android:keyOutputText="are" />-->
+            <!--</Row>-->
+            <!--<Row>-->
+                <!--<Key-->
+                    <!--android:codes="49"-->
+                    <!--android:keyEdgeFlags="left"-->
+                    <!--android:keyLabel="you"-->
+                    <!--android:keyOutputText="you" />-->
+            <!--</Row>-->
+        <!--</ScrollView>-->
+    <!--</Row>-->
+
+    <Row android:rowEdgeFlags="bottom">
+        <Key
+            android:codes="44"
+            android:keyEdgeFlags="left"
+            android:keyLabel=","
+            android:keyWidth="10%p" />
+        <Key
+            android:codes="47"
+            android:keyLabel="/"
+            android:keyWidth="10%p" />
+        <Key
+            android:codes="32"
+            android:isRepeatable="true"
+            android:keyLabel="SPACE"
+            android:keyWidth="40%p" />
+        <Key
+            android:codes="-5"
+            android:isRepeatable="true"
+            android:keyLabel="DEL"
+            android:keyWidth="20%p" />
+        <Key
+            android:codes="-4"
+            android:keyEdgeFlags="right"
+            android:keyLabel="DONE"
+            android:keyWidth="20%p" />
+    </Row>
+
+</Keyboard>
