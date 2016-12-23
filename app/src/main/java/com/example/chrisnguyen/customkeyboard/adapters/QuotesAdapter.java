@@ -61,13 +61,17 @@ public class QuotesAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int arg0) {
-        return null;
+    public String getItem(int position) {
+        return mQuotes.get(position);
     }
 
     @Override
     public long getItemId(int position) {
         return 0;
+    }
+
+    public List<String> getQuotes() {
+        return mQuotes;
     }
 }
 

@@ -5,6 +5,12 @@ package com.example.chrisnguyen.customkeyboard.constants;
  */
 public class Quotes {
 
+    public static final String[] SIGNATURES = {
+            "\n- That's what Trump said",
+            "\n- You've been Trumped!",
+            "\n- The D"
+    };
+
     public static final String[] CATEGORIES = {
             "Recent",
             "Arrogant",

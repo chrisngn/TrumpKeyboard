@@ -6,14 +6,20 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.example.chrisnguyen.customkeyboard.R;
+import com.example.chrisnguyen.customkeyboard.adapters.QuotesAdapter;
 import com.example.chrisnguyen.customkeyboard.adapters.TrumpPagerAdapter;
+import com.example.chrisnguyen.customkeyboard.constants.Quotes;
 import com.example.chrisnguyen.customkeyboard.services.TrumpKeyboardService;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by chrisnguyen on 12/12/16.
@@ -78,21 +84,36 @@ public class TrumpKeyboardView extends View {
         mTabs.setViewPager(mViewPager);
 
         setupButtons();
+
+        // Skip the "Recent" section. Set the default to the second page
+        mViewPager.setCurrentItem(1);
     }
 
     private void setupButtons() {
         Button delete = (Button) mLayout.findViewById(R.id.delete_button);
         Button globe = (Button) mLayout.findViewById(R.id.globe_button);
         Button random = (Button) mLayout.findViewById(R.id.random_button);
-        Button send = (Button) mLayout.findViewById(R.id.send_button);
+        final Button send = (Button) mLayout.findViewById(R.id.send_button);
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO: make it repeatable
-                mTrumpKeyboardService.sendDownKeyEvent(KeyEvent.KEYCODE_DEL, 1, KeyEvent.FLAG_LONG_PRESS);
+                mTrumpKeyboardService.sendMultipleKeyEvent(KeyEvent.KEYCODE_DEL, 1, 0);
             }
         });
+
+//        delete.setOnTouchListener(new OnTouchListener() {
+//            int i = 1;
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                while (event.getAction() == MotionEvent.ACTION_DOWN) {
+//                    Log.d("onTouch", String.valueOf(i++));
+//                    mTrumpKeyboardService.sendDownAndUpKeyEvent(KeyEvent.KEYCODE_DEL, 1, KeyEvent.FLAG_LONG_PRESS);
+//                }
+//                return true;
+//            }
+//        });
 
         globe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +126,14 @@ public class TrumpKeyboardView extends View {
         random.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<QuotesAdapter> quotesAdapters = mTrumpPagerAdapter.getQuotesAdapters();
+                Random rand = new Random();
 
+                // Exclude "Recent" category
+                QuotesAdapter qa = quotesAdapters.get(rand.nextInt(Quotes.CATEGORIES.length - 1));
+                mTrumpKeyboardService.sendText(qa.getItem(rand.nextInt(qa.getCount())));
+
+                send.callOnClick();
             }
         });
 
